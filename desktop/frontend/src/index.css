@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    background-color: #F8FAFC;
+    color: #0F172A;
+    overflow-x: hidden;
+  }
+}
+
+/* Mechanical Tactile 3D Buttons & Cards (Funimated & Playful) */
+.btn-tactile {
+  transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.1s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 2px solid #0F172A;
+  box-shadow: 0 4px 0 0 #0F172A;
+  user-select: none;
+}
+
+.btn-tactile:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 0 0 #0F172A;
+}
+
+.btn-tactile:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 0px 0 0 #0F172A;
+}
+
+.btn-tactile-coral {
+  background-color: #FF5A5F;
+  color: #FFFFFF;
+}
+
+.btn-tactile-coral:hover:not(:disabled) {
+  background-color: #FF444A;
+}
+
+.btn-tactile-indigo {
+  background-color: #6366F1;
+  color: #FFFFFF;
+}
+
+.btn-tactile-indigo:hover:not(:disabled) {
+  background-color: #4F46E5;
+}
+
+.btn-tactile-emerald {
+  background-color: #10B981;
+  color: #FFFFFF;
+}
+
+.btn-tactile-emerald:hover:not(:disabled) {
+  background-color: #059669;
+}
+
+.card-tactile {
+  background-color: #FFFFFF;
+  border: 2px solid #0F172A;
+  box-shadow: 0 6px 0 0 #0F172A;
+  border-radius: 24px;
+}
+
+/* Animated Candy Stripe for Progress Bar */
+@keyframes candy-stripe {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 36px 0;
+  }
+}
+
+.candy-striped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.25) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.25) 50%,
+    rgba(255, 255, 255, 0.25) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 36px 36px;
+  animation: candy-stripe 0.8s linear infinite;
+}

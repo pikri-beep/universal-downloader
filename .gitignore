@@ -1,0 +1,78 @@
+# ==========================================
+# Universal Media Downloader - .gitignore
+# ==========================================
+
+# Operating System & IDE
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+.superpowers/
+
+# Python & Backend
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+*.egg-info/
+.installed.cfg
+*.egg
+.pytest_cache/
+.coverage
+htmlcov/
+
+# PyInstaller & Desktop Dist
+build/
+dist/
+*.manifest
+*.spec.bak
+
+# Node.js & Frontend
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+desktop/frontend/dist/
+desktop/frontend/.vite/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Android & Gradle
+.gradle/
+build/
+mobile/.gradle/
+mobile/build/
+mobile/app/build/
+mobile/local.properties
+mobile/*.iml
+mobile/app/*.iml
+*.apk
+*.ap_
+*.aab
+*.dex
+captures/
+.externalNativeBuild/
+.cxx/
+
+# Binary Downloads & Temporary Storage
+downloads/
+temp/
+*.log
+ffmpeg.exe
+ffprobe.exe

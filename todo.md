@@ -1,0 +1,14 @@
+-[x] Terjadi kesalahan saat mengunduh: 'YoutubeDL' object has no attribute 'add_post_processor_hook' (Fixed: Typo diperbaiki menjadi `postprocessor_hooks` dan `add_postprocessor_hook`).
+-[x] ui offside pemberitahuan (Fixed: Lebar toast dibatasi `max-w-md w-[calc(100vw-32px)]` dengan text-wrapping aman, border taktil 2px, dan pembersihan kode ANSI terminal escape sequence).
+-[x] Hilangkan ciri AI slop (Fixed: Pil-pil dekorasi generik dan footer slogan bombastis dihapus total).
+-[x] Frontend Funimated & Playful (Fixed: Tombol mechanical tactile 3D dengan push-down depth nyata, kartu berbingkai fisik tebal, animasi squash & stretch spring physics, striped candy-bar progress bar, efek confetti burst saat selesai unduh, dan copy yang ramah tanpa template klise).
+-[x] Error seperti di gambar 1 saat mau download TikTok (Fixed: Dipasang library browser impersonation `curl_cffi` yang mengatasi challenge TikTok).
+-[x] Error seperti gambar 2 saat mau download dari Instagram (Fixed: Diterapkan patch ekstraktor Instagram untuk menangani postingan foto / carousel foto tanpa melempar error "There is no video in this post").
+-[x] Error Twitter / X: "No video could be found in this tweet" (Fixed: Diterapkan patch ekstraktor Twitter / X agar postingan foto tunggal maupun multi-foto di-ekstrak gambarnya dalam resolusi penuh dan disajikan opsi unduh Foto JPG).
+-[x] Tombol "Buka File" saat selesai unduh tidak membuka file secara langsung (Fixed: Dibuat endpoint baru `/api/open-file` yang menggunakan `os.startfile()` native Windows sehingga file video/audio/gambar langsung terbuka dan diputar di media player default).
+-[x] Error TikTok sensitif/18+: "This post may not be comfortable for some audiences. Log in for access" (Fixed: Ditambahkan fallback engine cerdas untuk mengambil video TikTok tanpa watermark dan tanpa batasan login).
+-[x] Fase 2 Mobile Android Native (Completed: Dibangun aplikasi Android mandiri 100% on-device menggunakan Kotlin + Jetpack Compose + youtubedl-android + FFmpeg ARM64, lengkap dengan Quick Share Sheet interaktif, Foreground Service notification, integrasi MediaStore auto-galeri, dan antarmuka Funimated taktil).
+-[x] Build & Packaging APK Android Fase 2 (Completed: Menghasilkan APK arm64-v8a 69.7MB dan universal 164MB di `mobile/app/build/outputs/apk/debug/`).
+-[x] Fase 3: Rencana & Sanitasi GitHub Repo (Completed: Inisialisasi Git, .gitignore komprehensif, lisensi MIT, dan README modern dengan badges).
+-[x] Fase 3: Standalone Desktop .exe Builder (Completed: PyWebView native Edge Chromium window, PyInstaller spec, static FFmpeg & FFprobe bundled out-of-the-box, dan 1-klik builder desktop/build_exe.bat yang menghasilkan UniversalDownloader-Windows.zip).
+-[x] Fase 3: GitHub Actions CI/CD Multi-Platform (Completed: Workflow .github/workflows/release.yml otomatis mengompilasi Desktop .exe dan Android APK lalu mempublikasikannya ke GitHub Releases saat tag v* di-push).
