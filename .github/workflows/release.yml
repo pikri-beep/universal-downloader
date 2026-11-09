@@ -43,17 +43,18 @@ jobs:
           pip install -r desktop/backend/requirements.txt
           pip install pyinstaller pywebview
 
-      - name: Download Static FFmpeg Binaries
+      - name: Setup FFmpeg Binaries
         shell: pwsh
         run: |
           New-Item -ItemType Directory -Force -Path desktop/bin
-          $zipUrl = "https://github.com/yt-dlp/FFmpeg-Builds/releases/download/autobuild-2024-05-31-14-11/ffmpeg-N-115715-g8787090887-win64-gpl.zip"
-          $zipPath = "desktop/bin/ffmpeg.zip"
-          Invoke-WebRequest -Uri $zipUrl -OutFile $zipPath
-          Expand-Archive -Path $zipPath -DestinationPath "desktop/bin/temp" -Force
-          Get-ChildItem -Path "desktop/bin/temp" -Recurse -Filter "ffmpeg.exe" | Copy-Item -Destination "desktop/bin/ffmpeg.exe"
-          Get-ChildItem -Path "desktop/bin/temp" -Recurse -Filter "ffprobe.exe" | Copy-Item -Destination "desktop/bin/ffprobe.exe"
-          Remove-Item -Recurse -Force "desktop/bin/temp", $zipPath
+          choco install ffmpeg -y --no-progress
+          $ffmpegPath = (Get-Command ffmpeg).Source
+          Write-Host "FFmpeg located at: $ffmpegPath"
+          Copy-Item $ffmpegPath -Destination "desktop/bin/ffmpeg.exe" -Force
+          $ffprobePath = Join-Path (Split-Path $ffmpegPath) "ffprobe.exe"
+          if (Test-Path $ffprobePath) {
+            Copy-Item $ffprobePath -Destination "desktop/bin/ffprobe.exe" -Force
+          }
 
       - name: Package with PyInstaller
         working-directory: desktop
@@ -64,7 +65,9 @@ jobs:
         shell: pwsh
         run: |
           Copy-Item "desktop/bin/ffmpeg.exe" -Destination "desktop/dist/UniversalDownloader/" -Force
-          Copy-Item "desktop/bin/ffprobe.exe" -Destination "desktop/dist/UniversalDownloader/" -Force
+          if (Test-Path "desktop/bin/ffprobe.exe") {
+            Copy-Item "desktop/bin/ffprobe.exe" -Destination "desktop/dist/UniversalDownloader/" -Force
+          }
 
       - name: Create Release Zip
         run: |
@@ -88,9 +91,7 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '17'
-
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+          cache: 'gradle'
 
       - name: Grant Execute Permission for Gradlew
         working-directory: mobile
